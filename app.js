@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let squares = Array.from(document.querySelectorAll('.grid div'))
     const scoreDisplay = document.querySelector('#score')
     const startBtn = document.querySelector('#start-button')
+    const restartBtn = document.querySelector('#restart-button')
+    const g_Over = document.querySelector('.game-over')
+    const container = document.querySelector('.container')
+    const scoresTab = document.querySelector('.scoresTab')
+
     const width = 10
     let nextRandom = 0; 
     let timerID;
@@ -240,12 +245,19 @@ function addScore() {
 //game over
 function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-        scoreDisplay.innerHTML = 'Game Over';
+        scoreDisplay.innerHTML = 'End';
         clearInterval(timerID);
-        alert('GameOver');
-        location.reload();
+        g_Over.style.display = "block"
+        container.style.display = "none"
+        scoresTab.style.display = "none"
+        restartBtn.addEventListener('click',() => {
+            location.reload();
+        })
+        
     }
+
 }
+
 
 
 })
