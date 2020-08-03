@@ -126,10 +126,11 @@ function freeze () {
         random =nextRandom;
         nextRandom = Math.floor(Math.random()* theTetrominoes.length);
         current = theTetrominoes[random][currentRotation];
-        currentPosition = 4;
+        currentPosition = 4; 
         draw();
         displayShape();
         addScore();
+        timerID = setInterval(moveDown, 1000);
         gameOver();
     }
 
@@ -252,6 +253,7 @@ function gameOver() {
         scoresTab.style.display = "none"
         restartBtn.addEventListener('click',() => {
             location.reload();
+            
         })
         
     }
